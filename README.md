@@ -1,4 +1,5 @@
 # dcore
+# version 0.1 
 # Requirement 
 Install the terraform 
 # Run the terraform command
