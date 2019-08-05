@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                withAWS(region: 'us-east-1', credentials: 'dcore-api-prodkey') {
+                withAWS(region: 'us-east-1', credentials: 'dcore-api-devkey') {
                 sh '''
                     terraform init -input=false 
                 '''
@@ -12,9 +12,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                withAWS(region: 'us-east-1', credentials: 'dcore-api-prodkey'){
+                withAWS(region: 'us-east-1', credentials: 'dcore-api-devkey'){
                 sh '''
-                   terraform plan -var dcore_environment=prod -var aws_profile=prod -var ecs_cluster=dcore-prod -var ecs_key_pair_name=dcore-prod-key -var max_instance_size=2 -var max_instance_size=4 -var desired_capacity=2 -out=tfplan -input=false
+                   terraform plan -var dcore_environment=dev -var aws_profile=dev -var ecs_cluster=dcore-dev -var ecs_key_pair_name=dcore-dev-key -var max_instance_size=1 -var max_instance_size=1 -var desired_capacity=1 -out=tfplan -input=false
                    terraform apply -input=false tfplan
                 '''
                }
