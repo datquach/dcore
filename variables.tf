@@ -31,8 +31,6 @@ variable "instancetype" {
   default = "t3.xlarge"
 }
 
-
-
 variable "key_path" {
   description = "SSH Public Key path"
   default = "/home/core/.ssh/id_rsa.pub"
@@ -48,4 +46,8 @@ variable "ecs_key_pair_name" {
 
 variable "dcore_environment" {
   description = "Dcore enviroment DEV/Prod"
+}
+
+variable "aws_profile" {
+  description = "AWS Profiles which is used for running terraform"
 }
